@@ -1,20 +1,52 @@
-$(document).ready(function(){
-  $('html').css('overflow','hidden');
+$(document).ready(function () {
+
+  $('html').css('overflow', 'hidden');
+
   let modalWrap = $('.modal-wrap');
   let modalClose = $('.modal-close');
-  modalClose.click(function(){
+  let modalOpen = $('.modalopen');
+  let modalCloseFn = () => {
     modalWrap.stop().fadeOut(200);
-    $('html').css('overflow','auto');
+    $('html').css('overflow', 'auto');
+    modalOpen.show();
+  }
+
+  modalOpen.hide();
+  modalClose.click(function () {
+    modalCloseFn();
   });
+  $('html').keydown(function (key) {
+    if (key.keyCode) {
+      modalCloseFn();
+    }
+  });
+
   let modalMain = $('.modal-main');
-  modalMain.click(function(event){
+  modalMain.click(function (event) {
     event.stopPropagation();
   });
-  modalWrap.click(function(){
-    modalWrap.stop().fadeOut(200);
-    $('html').css('overflow','auto');
+  modalWrap.click(function () {
+    modalCloseFn();
   });
+
+  modalOpen.click(function(){
+    modalWrap.stop().fadeIn(200);
+    $('html').css('overflow', 'hidden');
+    modalOpen.hide();
+  });
+
+
 });
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function () {
 
@@ -72,7 +104,7 @@ $(document).ready(function () {
 
     $(this).css('background-position-x', tgX);
   });
-  
+
   let first = $('.part-list-li').eq(0);
   let last = $('.part-list-li').eq(4);
 
