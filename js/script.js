@@ -1,27 +1,26 @@
 $(document).ready(function () {
+  $("html").css("overflow", "hidden");
 
-  $('html').css('overflow', 'hidden');
-
-  let modalWrap = $('.modal-wrap');
-  let modalClose = $('.modal-close');
-  let modalOpen = $('.modalopen');
+  let modalWrap = $(".modal-wrap");
+  let modalClose = $(".modal-close");
+  let modalOpen = $(".modalopen");
   let modalCloseFn = () => {
     modalWrap.stop().fadeOut(200);
-    $('html').css('overflow', 'auto');
+    $("html").css("overflow", "auto");
     modalOpen.show();
-  }
+  };
 
   modalOpen.hide();
   modalClose.click(function () {
     modalCloseFn();
   });
-  $('html').keydown(function (key) {
+  $("html").keydown(function (key) {
     if (key.keyCode) {
       modalCloseFn();
     }
   });
 
-  let modalMain = $('.modal-main');
+  let modalMain = $(".modal-main");
   modalMain.click(function (event) {
     event.stopPropagation();
   });
@@ -29,22 +28,12 @@ $(document).ready(function () {
     modalCloseFn();
   });
 
-  modalOpen.click(function(){
+  modalOpen.click(function () {
     modalWrap.stop().fadeIn(200);
-    $('html').css('overflow', 'hidden');
+    $("html").css("overflow", "hidden");
     modalOpen.hide();
   });
-
-
 });
-
-
-
-
-
-
-
-
 
 
 
@@ -53,7 +42,6 @@ $(document).ready(function () {
   let header = $('.header');
   let gnb = $('.gnb');
 
-  // 서브메뉴 높이값
   let gnbMaxHeight = gnb.outerHeight();
   let gnbMinHeight = header.outerHeight();
   header.css('height', gnbMinHeight);
@@ -65,7 +53,6 @@ $(document).ready(function () {
   });
 
 
-  // 서브메뉴열기
   gnb.mouseenter(function () {
     header.addClass('header-open');
   });
@@ -73,7 +60,7 @@ $(document).ready(function () {
     header.removeClass('header-open');
   });
 
-  // 주메뉴 포커스 기능
+
   let depth_1_Li = $('.depth1 > li');
   $.each(depth_1_Li, function (index) {
     $(this).mouseenter(function () {
@@ -84,10 +71,9 @@ $(document).ready(function () {
     });
   });
 
-  // 컨텐츠 이동 버튼
+
   let visualBt = $('.visual-bt');
   let partY = $('.part').offset().top;
-
   visualBt.click(function () {
     $('html').animate({
       scrollTop: partY
@@ -95,7 +81,6 @@ $(document).ready(function () {
   });
 
 
-  // part 배경 배치
   let partListLi = $('.part-list li');
   let partListW = 1200 / partListLi.length;
   $.each(partListLi, function (index) {
